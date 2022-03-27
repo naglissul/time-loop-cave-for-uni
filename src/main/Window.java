@@ -1,11 +1,13 @@
 package main;
 
+import gameStates.StateHandler;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Window extends Canvas {
 
-    public Window (int width, int height, String title, RenderThread renderThread) {
+    public Window (int width, int height, String title, RenderThread renderThread, StateHandler handler) {
         JFrame frame = new JFrame(title);
 
         frame.setPreferredSize(new Dimension(width, height));
@@ -16,7 +18,7 @@ public class Window extends Canvas {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.add(renderThread);
+        frame.addKeyListener(new KeyInput(handler));
         frame.setVisible(true);
     }
-
 }

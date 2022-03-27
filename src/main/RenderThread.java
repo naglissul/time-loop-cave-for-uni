@@ -16,7 +16,7 @@ public class RenderThread extends Canvas implements Runnable {
     public RenderThread(StateHandler handler, Object lock) {
         this.handler = handler;
         this.lock = lock;
-        new Window(WIDTH, HEIGHT, "Title", this);
+        new Window(WIDTH, HEIGHT, "Time Loop Cave", this, handler);
     }
 
     @Override

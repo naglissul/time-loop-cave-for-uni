@@ -2,7 +2,9 @@ package main;
 
 import gameStates.StateHandler;
 
-public class TickThread implements Runnable {
+import java.awt.event.KeyAdapter;
+
+public class TickThread extends KeyAdapter implements Runnable {
 
     private StateHandler handler;
     private Object lock;
@@ -48,5 +50,4 @@ public class TickThread implements Runnable {
         }
         System.exit(1);
     }
-
 }
