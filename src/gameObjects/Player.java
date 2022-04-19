@@ -1,9 +1,11 @@
 package gameObjects;
 
 import gameStates.Level1;
+import kotlin.Pair;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Vector;
 
 public class Player extends GameObject implements Movable {
     private int speed = 3;
@@ -52,7 +54,7 @@ public class Player extends GameObject implements Movable {
             velY = speed;
         }
         if (k == KeyEvent.VK_SPACE) {
-            levelHandler.objects.add(new Bullet(x, y, Direction.Right));
+            levelHandler.objects.add(new Bullet(x, y, () -> {return new Pair<Integer, Integer>(5, 0);}));
         }
     }
 

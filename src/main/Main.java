@@ -2,11 +2,6 @@ package main;
 
 import gameStates.StateHandler;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
-
 public class Main {
     public volatile StateHandler handler;
     private Thread thread1;

@@ -1,12 +1,16 @@
 package gameObjects;
 
+import kotlin.Pair;
+
 import java.awt.*;
 
 public class Bullet extends GameObject implements Movable {
 
-    public Bullet(int x, int y, Direction direction) {
+    public Bullet(int x, int y, Directable direction) {
         super(x, y);
-        setVels(direction);
+        Pair<Integer, Integer> dir = direction.direct();
+        velX = dir.getFirst();
+        velY = dir.getSecond();
         squareSize = 5;
         color = Color.RED;
     }
@@ -28,24 +32,5 @@ public class Bullet extends GameObject implements Movable {
     public void move() {
         x += velX;
         y += velY;
-    }
-
-    private void setVels(Direction direction) {
-        if (direction == Direction.Down) {
-            velX = 0;
-            velY = 5;
-        }
-        if (direction == Direction.Up) {
-            velX = 0;
-            velY = -5;
-        }
-        if (direction == Direction.Right) {
-            velX = 5;
-            velY = 0;
-        }
-        if (direction == Direction.Left) {
-            velX = -5;
-            velY = 0;
-        }
     }
 }
