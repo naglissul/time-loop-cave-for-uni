@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 public class StateHandler {
     private GameState currState;
     private Main main;
-    public boolean running = true;
+    public volatile boolean running = true;
     public Object lock;
 
     public StateHandler(Main main) {

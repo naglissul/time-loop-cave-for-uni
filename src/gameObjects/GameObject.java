@@ -3,7 +3,8 @@ package gameObjects;
 import java.awt.*;
 
 public abstract class GameObject {
-    protected int x, y, velX, velY;
+    protected volatile int x, y;
+    protected int velX, velY;
     protected Color color;
     protected ObjectID id;
     protected int squareSize = 16;
