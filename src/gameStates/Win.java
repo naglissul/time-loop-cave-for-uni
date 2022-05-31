@@ -19,7 +19,8 @@ public class Win extends GameState {
 
     @Override
     protected void render(Graphics g) {
-
+        g.setColor(Color.GREEN);
+        g.drawString("You won", 300, 200);
     }
 
     @Override
@@ -31,4 +32,5 @@ public class Win extends GameState {
     protected void keyReleased(int k) {
 
     }
+
 }

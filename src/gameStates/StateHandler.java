@@ -10,23 +10,17 @@ public class StateHandler {
     private Main main;
     public volatile boolean running = true;
     public Object lock;
+    private GameStateFactory stateFactory;
 
     public StateHandler(Main main) {
         this.main = main;
+        stateFactory = new GameStateFactory(this);
         setState(GameStateID.Level1);
         lock = new Object();
     }
 
-    public void setState(GameStateID state) {
-        if (state == GameStateID.Win) {
-            currState = new Win(this);
-        }
-        if (state == GameStateID.Level1) {
-            currState = new Level1(this);
-        }
-        if (state == GameStateID.GameOver) {
-            currState = new GameOver(this);
-        }
+    public void setState(GameStateID stateId) {
+        currState = stateFactory.getState(stateId);
     }
 
     public synchronized void tick() {

@@ -19,7 +19,8 @@ public class GameOver extends GameState {
 
     @Override
     protected void render(Graphics g) {
-
+        g.setColor(Color.RED);
+        g.drawString("Game Over", 300, 200);
     }
 
     @Override

@@ -3,9 +3,11 @@ package gameObjects;
 import java.awt.*;
 
 public class Enemy extends GameObject implements Movable {
+    private EnemyState state;
     public Enemy(int x, int y) {
         super(x, y);
         id = ObjectID.Enemy;
+        state = EnemyState.Alive;
         color = Color.CYAN;
         velX = 0;
         velY = 0;
@@ -28,5 +30,12 @@ public class Enemy extends GameObject implements Movable {
     public void move() {
         x += velX;
         y += velY;
+    }
+
+    public void setState(EnemyState state) {
+        this.state = state;
+    }
+    public EnemyState getState() {
+        return state;
     }
 }

@@ -1,13 +1,15 @@
 package gameObjects;
 
+import gameStates.Level1;
 import kotlin.Pair;
 
 import java.awt.*;
 
 public class Bullet extends GameObject implements Movable {
-
-    public Bullet(int x, int y, Directable direction) {
+    private Level1 levelHandler;
+    public Bullet(int x, int y, Directable direction, Level1 levelHandler) {
         super(x, y);
+        this.levelHandler = levelHandler;
         Pair<Integer, Integer> dir = direction.direct();
         velX = dir.getFirst();
         velY = dir.getSecond();
@@ -18,6 +20,13 @@ public class Bullet extends GameObject implements Movable {
     @Override
     public void tick() {
         move();
+        for (int i = 0; i < levelHandler.objects.size(); i++) {
+            GameObject obj = levelHandler.objects.get(i);
+            if (obj.getId() == ObjectID.Enemy && obj.getBounds().intersects(getBounds())) {
+                levelHandler.objects.remove(obj);
+            }
+        }
+
     }
 
     @Override
